@@ -1,12 +1,12 @@
-#include "node.h"
+#include "list.h"
 
 #include <iostream>
 #include <vector>
 
 using namespace std;
 
-int main() {
-
+void test_list() {
+  using namespace list;
   vector<int> const samples({ 1, 2, 3, 4, 5 });
 
   Node::Ptr list;
@@ -39,4 +39,19 @@ int main() {
   cout << "sorted: " << list << endl;
   list = insert_sorted(list, 7);
   cout << "sorted: " << list << endl;
+
+  list = remove(list, 0);
+  cout << "remove first: " << list << endl;
+  list = remove(list, 7);
+  cout << "remove last: " << list << endl;
+  list = remove(list, 1);
+  list = remove(list, 2);
+  list = remove(list, 3);
+  list = remove(list, 5);
+  list = remove(list, 6);
+  cout << "remove rest: " << list << endl;
+}
+
+int main() {
+  test_list();
 }
