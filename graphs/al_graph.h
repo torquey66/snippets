@@ -14,8 +14,13 @@
 
 namespace jcf {
 
-  /** 
-      Adjacency list graph representation.
+  /** Adjacency list graph representation.
+
+      This is a directional graph although you can make it
+      bi-directional just by adding reverse edges manually.
+
+      Cycles are allowed, but self-referential nodes are not - perhaps
+      that restriction should be relaxed.
 
       !@# consider templating over node id and value types !@#
   */
@@ -40,7 +45,7 @@ namespace jcf {
     void dump() const;
 
     template <typename COLLECTION>
-    static node_id_t top(const COLLECTION&) { return node_id_t(0); } // !@# fix this
+    static node_id_t top(const COLLECTION&);
 
     template <typename FUN, typename COLLECTION>
     void traverse(node_id_t root, FUN visit) const;
